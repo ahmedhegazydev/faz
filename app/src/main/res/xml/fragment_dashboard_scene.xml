@@ -35,7 +35,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintHorizontal_bias="1.0" />
+            app:layout_constraintHorizontal_bias="1.0"
+            android:rotation="90" />
 
         <Constraint
             android:id="@+id/recyclerView"
@@ -59,5 +60,6 @@
             motion:touchAnchorId="@+id/recyclerView"
             motion:touchAnchorSide="top"
             motion:dragDirection="dragUp" />
+
     </Transition>
 </MotionScene>
