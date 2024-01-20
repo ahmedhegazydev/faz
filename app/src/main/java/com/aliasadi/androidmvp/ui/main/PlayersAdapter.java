@@ -15,16 +15,16 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.MovieViewHolder> {
+public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayerViewHolder> {
 
-    public interface MovieListener {
-        void onMovieClicked(PlayerDetails playerDetails);
+    public interface PlayerListener {
+        void onPlayerClicked(PlayerDetails playerDetails);
     }
 
     private List<PlayerDetails> items;
-    private MovieListener listener;
+    private PlayerListener listener;
 
-    public PlayersAdapter(MovieListener listener) {
+    public PlayersAdapter(PlayerListener listener) {
         this.listener = listener;
         items = new ArrayList<>();
     }
@@ -35,13 +35,13 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.MovieVie
     }
 
     @Override
-    public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PlayerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_player, parent, false);
-        return new MovieViewHolder(view);
+        return new PlayerViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(MovieViewHolder holder, int position) {
+    public void onBindViewHolder(PlayerViewHolder holder, int position) {
         holder.bind(position);
     }
 
@@ -54,13 +54,13 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.MovieVie
         return items.get(position);
     }
 
-    public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class PlayerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.image) AppCompatImageView image;
         @BindView(R.id.title) TextView title;
         @BindView(R.id.desc) TextView desc;
 
-        MovieViewHolder(View itemView) {
+        PlayerViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
@@ -93,7 +93,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.MovieVie
 
         @Override
         public void onClick(View view) {
-            listener.onMovieClicked((PlayerDetails) view.getTag());
+            listener.onPlayerClicked((PlayerDetails) view.getTag());
         }
     }
 }

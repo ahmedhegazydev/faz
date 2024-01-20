@@ -29,10 +29,10 @@ public class FanzRepository implements FanzDataSource {
     }
 
     @Override
-    public void getRemoteConfigForPlayers(final LoadMoviesCallback callback) {
+    public void getRemoteConfigForPlayers(final LoadRemoteConfigCallback callback) {
         if (callback == null) return;
 
-        fanzDataSource.getRemoteConfigForPlayers(new LoadMoviesCallback() {
+        fanzDataSource.getRemoteConfigForPlayers(new LoadRemoteConfigCallback() {
 
             @Override
             public void onRemoteConfigLoaded(Map<String, Boolean> players) {
@@ -41,7 +41,7 @@ public class FanzRepository implements FanzDataSource {
 
             @Override
             public void onDataNotAvailable() {
-                getMoviesFromLocalDataSource(callback);
+                getMRemoteConfigFromLocalDataSource(callback);
                 callback.onDataNotAvailable();
 
             }
@@ -76,8 +76,8 @@ public class FanzRepository implements FanzDataSource {
     }
 
 
-    private void getMoviesFromLocalDataSource(final LoadMoviesCallback callback) {
-        fanzDataSource.getRemoteConfigForPlayers(new LoadMoviesCallback() {
+    private void getMRemoteConfigFromLocalDataSource(final LoadRemoteConfigCallback callback) {
+        fanzDataSource.getRemoteConfigForPlayers(new LoadRemoteConfigCallback() {
             @Override
             public void onRemoteConfigLoaded(Map<String, Boolean> players) {
                 callback.onRemoteConfigLoaded(players);

@@ -5,7 +5,7 @@ import com.aliasadi.androidmvp.ui.base.BaseView;
 
 public interface DetailsView extends BaseView {
 
-    void showMovieData(PlayerDetails playerDetails);
+    void showPlayersData(PlayerDetails playerDetails);
 
     void showDataUnavailableMessage();
 

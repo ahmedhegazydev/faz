@@ -28,9 +28,9 @@ public class DataManager {
 
     public Preference getUserPreference() { return PowerPreference.getFileByName("UserPreference"); }
 
-    public FanzRepository getMovieRepository() {
+    public FanzRepository getPlayersRepository() {
 
-        FanZApi fanZApi = FanzService.getInstance().getMovieApi();
+        FanZApi fanZApi = FanzService.getInstance().getFanzApi();
         FanzRemoteDataSource fanZRemote = FanzRemoteDataSource.getInstance(fanZApi);
 
 

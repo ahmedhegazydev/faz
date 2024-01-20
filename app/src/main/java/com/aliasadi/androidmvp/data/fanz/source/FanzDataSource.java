@@ -6,7 +6,7 @@ import java.util.Map;
 
 public interface FanzDataSource {
 
-    interface LoadMoviesCallback {
+    interface LoadRemoteConfigCallback {
         void onRemoteConfigLoaded(Map<String, Boolean> players);
         void onDataNotAvailable();
         void onError();
@@ -17,7 +17,7 @@ public interface FanzDataSource {
         void onError();
     }
 
-    void getRemoteConfigForPlayers(LoadMoviesCallback callback);
+    void getRemoteConfigForPlayers(LoadRemoteConfigCallback callback);
     void createDynamicLink(Intent intent, CreateDynamicLinkCallback callback);
 
 }

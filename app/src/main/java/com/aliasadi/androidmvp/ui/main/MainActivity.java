@@ -111,7 +111,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     @NonNull
     @Override
     protected MainPresenter createPresenter() {
-        FanzRepository fanzRepository = DataManager.getInstance().getMovieRepository();
+        FanzRepository fanzRepository = DataManager.getInstance().getPlayersRepository();
         return new MainPresenter(this, fanzRepository);
     }
 
@@ -153,8 +153,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     }
 
     @Override
-    public void showThereIsNoMovies() {
-        Toast.makeText(this, "There is no playerss!", Toast.LENGTH_SHORT).show();
+    public void showThereIsNoPlayers() {
+        Toast.makeText(this, "There is no players!", Toast.LENGTH_SHORT).show();
     }
 
 }

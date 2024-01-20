@@ -10,5 +10,5 @@ void showPlayersFromRemoteConfig(Map<String, Boolean> player);
 
     void showErrorMessage();
 
-    void showThereIsNoMovies();
+    void showThereIsNoPlayers();
 }

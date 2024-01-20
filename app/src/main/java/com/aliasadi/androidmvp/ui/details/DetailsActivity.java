@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,18 +19,13 @@ import butterknife.ButterKnife;
 
 public class DetailsActivity extends BaseActivity<DetailsPresenter> implements DetailsView {
 
-    private static final String EXTRA_MOVIE = "EXTRA_MOVIE";
+    private static final String EXTRA_PLAYERS = "EXTRA_PLAYERS";
 
     @BindView(R.id.imageView)
     ImageView imageView;
 
     @BindView(R.id.scrollView)
     RecyclerView scrollView;
-
-    @BindView(R.id.title)
-    TextView title;
-    @BindView(R.id.desc)
-    TextView desc;
 
     private PlayersAdapter playersAdapter;
 
@@ -49,7 +43,7 @@ public class DetailsActivity extends BaseActivity<DetailsPresenter> implements D
     }
 
     @Override
-    public void showMovieData(PlayerDetails playerDetails) {
+    public void showPlayersData(PlayerDetails playerDetails) {
 //        title.setText(playerDetails.getTitle());
 //        desc.setText(playerDetails.getDescription());
 //        Picasso.get().load(playerDetails.getImage()).into(image);
@@ -63,13 +57,13 @@ public class DetailsActivity extends BaseActivity<DetailsPresenter> implements D
     @NonNull
     @Override
     protected DetailsPresenter createPresenter() {
-        PlayerDetails playerDetails = getIntent().getParcelableExtra(EXTRA_MOVIE);
+        PlayerDetails playerDetails = getIntent().getParcelableExtra(EXTRA_PLAYERS);
         return new DetailsPresenter(this, playerDetails);
     }
 
     public static void start(Context context, PlayerDetails playerDetails) {
         Intent intent = new Intent(context, DetailsActivity.class);
-        intent.putExtra(EXTRA_MOVIE, playerDetails);
+        intent.putExtra(EXTRA_PLAYERS, playerDetails);
         context.startActivity(intent);
     }
 }

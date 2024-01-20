@@ -22,7 +22,7 @@ public class FanzService {
         return singleton;
     }
 
-    public FanZApi getMovieApi() {
+    public FanZApi getFanzApi() {
         return mFanZApi;
     }
 

@@ -14,12 +14,12 @@ public class DetailsPresenter extends BasePresenter<DetailsView> {
     }
 
     public void onAttach() {
-        showMovieData();
+        showPlayerDetailsData();
     }
 
-    private void showMovieData() {
+    private void showPlayerDetailsData() {
         if (playerDetails != null) {
-            view.showMovieData(playerDetails);
+            view.showPlayersData(playerDetails);
         } else {
             view.showDataUnavailableMessage();
         }

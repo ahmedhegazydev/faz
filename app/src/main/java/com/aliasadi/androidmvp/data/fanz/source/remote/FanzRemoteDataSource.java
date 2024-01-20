@@ -45,7 +45,7 @@ public class FanzRemoteDataSource implements FanzDataSource {
     }
 
     @Override
-    public void getRemoteConfigForPlayers(final LoadMoviesCallback callback) {
+    public void getRemoteConfigForPlayers(final LoadRemoteConfigCallback callback) {
         mFirebaseRemoteConfig.fetchAndActivate()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -112,6 +112,7 @@ public class FanzRemoteDataSource implements FanzDataSource {
                 String deepLinkString = deepLink.toString();
                 Log.e("TAG", "deepLinkString: " + deepLinkString);
                 if (deepLink != null) {
+                    //?playerId=2
                     String playerId = deepLink.getQueryParameter("playerId");
                     callback.onCreateDynamicLink(playerId);
                 }

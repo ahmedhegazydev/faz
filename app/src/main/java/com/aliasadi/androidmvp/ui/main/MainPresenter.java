@@ -22,14 +22,14 @@ public class MainPresenter extends BasePresenter<MainView> {
     }
 
     public void onAttach() {
-        getAllMovies();
+        getRemoteConfigForPlayers();
     }
 
     /**
      * Network
      **/
-    private void getAllMovies() {
-        fanzRepository.getRemoteConfigForPlayers(new MovieCallListener(view));
+    private void getRemoteConfigForPlayers() {
+        fanzRepository.getRemoteConfigForPlayers(new PlayersCallListener(view));
     }
 
     public void createDynamicLink(Intent intent) {
@@ -39,11 +39,11 @@ public class MainPresenter extends BasePresenter<MainView> {
         /**
          * Callback
          **/
-    private static class MovieCallListener implements FanzDataSource.LoadMoviesCallback {
+    private static class PlayersCallListener implements FanzDataSource.LoadRemoteConfigCallback {
 
         private WeakReference<MainView> view;
 
-        private MovieCallListener(MainView view) {
+        private PlayersCallListener(MainView view) {
             this.view = new WeakReference<>(view);
         }
 
@@ -56,7 +56,7 @@ public class MainPresenter extends BasePresenter<MainView> {
         @Override
         public void onDataNotAvailable() {
             if (view.get() == null) return;
-            view.get().showThereIsNoMovies();
+            view.get().showThereIsNoPlayers();
 
         }
 
