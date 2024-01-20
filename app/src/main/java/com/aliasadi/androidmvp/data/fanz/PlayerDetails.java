@@ -18,7 +18,7 @@ public class PlayerDetails implements Parcelable{
     public static List<PlayerDetails> getDummyList() {
         List<PlayerDetails> dummyList = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             PlayerDetails player = new PlayerDetails();
             player.setId(i);
             player.setTitle("Title " + i);

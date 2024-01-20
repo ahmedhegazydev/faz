@@ -24,8 +24,8 @@ public class DetailsActivity extends BaseActivity<DetailsPresenter> implements D
     @BindView(R.id.imageView)
     ImageView imageView;
 
-    @BindView(R.id.scrollView)
-    RecyclerView scrollView;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
 
     private PlayersAdapter playersAdapter;
 
@@ -36,7 +36,7 @@ public class DetailsActivity extends BaseActivity<DetailsPresenter> implements D
         ButterKnife.bind(this);
 
         playersAdapter = new PlayersAdapter(null);
-        scrollView.setAdapter(playersAdapter);
+        recyclerView.setAdapter(playersAdapter);
         playersAdapter.setItems(PlayerDetails.getDummyList());
 
         presenter.onAttach();
