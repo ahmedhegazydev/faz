@@ -1,27 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/tools">
-
-    <!-- Transition for swipe up -->
-    <Transition
-        motion:constraintSetEnd="@+id/end_up"
-        motion:constraintSetStart="@+id/start"
-        motion:duration="1000">
-
-        <OnSwipe
-            motion:touchAnchorId="@+id/recyclerView"
-            motion:touchAnchorSide="top"
-            motion:dragDirection="dragUp" />
-    </Transition>
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/recyclerView"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -32,7 +20,11 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/imageView"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.5"/>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end_up">
@@ -40,77 +32,32 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/recyclerView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5"
-            app:rotation="-180" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0" />
 
         <Constraint
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/imageView"
-            app:layout_constraintBottom_toBottomOf="parent" />
-    </ConstraintSet>
-
-    <ConstraintSet android:id="@+id/end_down">
-        <Constraint
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/recyclerView"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5"
-            app:rotation="180" />
-
-        <Constraint
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/imageView"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintHorizontal_bias="0.5"/>
     </ConstraintSet>
 
     <Transition
-        motion:constraintSetEnd="@+id/end"
-        motion:constraintSetStart="@id/start"
+        motion:constraintSetEnd="@+id/end_up"
+        motion:constraintSetStart="@+id/start"
         motion:duration="700"
         motion:motionInterpolator="easeInOut">
-        <KeyFrameSet>
-            <KeyAttribute
-                android:elevation="6dp"
-                motion:framePosition="50"
-                motion:motionTarget="@+id/img_motion" />
-            <KeyAttribute
-                android:alpha="0"
-                motion:framePosition="50"
-                motion:motionTarget="@+id/toolbar" />
-            <KeyAttribute
-                android:alpha="0"
-                motion:framePosition="50"
-                motion:motionTarget="@+id/rv_image" />
-            <KeyAttribute
-                android:alpha="0"
-                motion:framePosition="50"
-                motion:motionTarget="@+id/text_title" />
 
-            <KeyAttribute
-                android:alpha="0"
-                motion:framePosition="50"
-                motion:motionTarget="@+id/text_desc" />
-
-            <KeyPosition
-                motion:framePosition="50"
-                motion:keyPositionType="deltaRelative"
-                motion:motionTarget="@+id/img_motion"
-                motion:pathMotionArc="startHorizontal"
-                motion:percentY="0.2" />
-
-        </KeyFrameSet>
+        <OnSwipe
+            motion:touchAnchorId="@+id/recyclerView"
+            motion:touchAnchorSide="top"
+            motion:dragDirection="dragUp" />
     </Transition>
-
 </MotionScene>
